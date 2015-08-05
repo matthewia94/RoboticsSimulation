@@ -14,6 +14,8 @@
 class ControlNode
 {
 	private:
+	    geometry_msgs::Twist cmd_vel;
+	
 		ros::NodeHandle nh;
 
 		//Publishers
@@ -26,6 +28,8 @@ class ControlNode
 		ControlNode();
 		
 		void joy_callback(const sensor_msgs::Joy::ConstPtr& msg);
+
+		void update();
 
 };
 

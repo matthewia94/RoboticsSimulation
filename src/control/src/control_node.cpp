@@ -8,5 +8,15 @@
 
 int main(int argc, char** argv)
 {
+	ros::init(argc, argv, "control");
 
+	ControlNode con;
+
+	ros::Rate loop_rate(30);
+
+	while(ros::ok())
+	{
+		con.update();
+		ros::spinOnce();
+	}
 }
