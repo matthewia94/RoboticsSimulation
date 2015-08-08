@@ -17,4 +17,5 @@
   <xacro:include filename="$(find turtlebot_description)/urdf/sensors/asus_xtion_pro_offset.urdf.xacro"/>
   <!-- Additional Sensors for Gazebo -->
   <turtlebot_robot_position_gazebo/>
+  <turtlebot_sim_laser/>
 </robot>

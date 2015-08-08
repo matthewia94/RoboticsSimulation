@@ -6,10 +6,10 @@
     </include>
 
     <!-- Convert an xacro and put on parameter server -->
-    <param name="turtlebot_description" command="$(find xacro)/xacro.py $(find turtlebot_description)/robots/kobuki_hexagons_kinect.urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro.py $(find turtlebot_description)/robots/kobuki_hexagons_kinect.urdf.xacro" />
 
     <!-- Spawn a robot into Gazebo -->
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param turtlebot_description -urdf -model turlebot" />
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model turlebot" />
     
     <!-- Start control node -->
     <node name="control" pkg="control" type="control_node">
@@ -17,5 +17,10 @@
     </node>
     
     <!-- Joy node -->
-    <node name="joy" pkg="joy" type="joy_node"/>
+    <node name="joy" pkg="joy" type="joy_node">
+        <param name="dev" type="string" value="/dev/input/js0" />
+        <param name="deadzone" value="0.1" />
+    </node>
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" />
 </launch>
