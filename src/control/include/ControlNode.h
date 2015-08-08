@@ -11,10 +11,24 @@
 #include <sensor_msgs/Joy.h>
 #include <geometry_msgs/Twist.h>
 
+#define A_BUTTON 0
+#define B_BUTTON 1
+#define X_BUTTON 2
+#define Y_BUTTON 3
+
 class ControlNode
 {
 	private:
+		enum Mode
+		{
+			STANDBY,
+			TELEOP,
+			AUTO
+		};
+
+		Mode mode;
 	    geometry_msgs::Twist cmd_vel;
+	    int prev_buttons[14];
 	
 		ros::NodeHandle nh;
 
@@ -24,6 +38,7 @@ class ControlNode
 		//Subscribers
 		ros::Subscriber joy_sub;
 
+		void stop_robot();
 	public:
 		ControlNode();
 		
