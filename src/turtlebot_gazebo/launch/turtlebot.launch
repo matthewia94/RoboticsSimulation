@@ -2,6 +2,7 @@
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find turtlebot_gazebo)/worlds/turtlebot.world"/>
+        <arg name="use_sim_time" value="true"/>
         <!-- more default parameters can be changed here -->
     </include>
 
@@ -23,4 +24,6 @@
     </node>
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" />
+    
+    <node pkg="gmapping" type="slam_gmapping" name="slam"/>
 </launch>
