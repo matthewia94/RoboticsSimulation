@@ -19,7 +19,7 @@ void ControlNode::joy_callback(const sensor_msgs::Joy::ConstPtr& msg)
     if(mode == TELEOP)
     {
     	cmd_vel.linear.x = msg->axes[1];
-		cmd_vel.angular.y = msg->axes[2];
+		cmd_vel.angular.z = msg->axes[2];
     }
 }
 
